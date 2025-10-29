@@ -48,9 +48,14 @@ const numberOfLongWords = (arr) => {
 };
 
 const numberOfCharacters = (arr) => {
-  const counts = [...arr].reduce((acc, char) => (
-    acc[char] = (acc[char] || 0) + 1, acc
-  ), {});
+  const counts = [...arr].reduce((acc, currentWord) => {
+    if (!acc[currentWord]) {
+      acc[currentWord] = 1;
+    } else {
+      acc[currentWord]++;
+    }
+    return acc;
+  }, {});
   return counts;
 };
 
@@ -79,7 +84,7 @@ const sortNumbers = (numbers) => {
 
 const sortNumbersBetter = (numbers, descending) => {
   const numbersCopy = [...numbers];
-  numbersCopy.sort((a, b) => a - b)
+  numbersCopy.sort((a, b) => a - b);
   if (descending) {
     numbersCopy.reverse();
   };
@@ -92,11 +97,7 @@ const sortUsersByOrder = (users) => {
 };
 
 const sortUsersByName = (users) => {
-  return [...users].sort((a, b) => {
-    if (a.name < b.name) return -1;
-    if (a.name > b.name) return 1;
-    return 0;
-  });
+  return [...users].sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0)
 };
 
 module.exports = {
