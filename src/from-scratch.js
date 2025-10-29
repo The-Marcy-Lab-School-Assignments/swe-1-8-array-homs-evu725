@@ -1,45 +1,104 @@
 // find
-const getUserById = () => { };
+const getUserById = (users, id) => {
+  return users.find((user) => user.id === id);
+};
 
 // findIndex
-const getIndexOfApple = () => { };
+const getIndexOfApple = (foods) => {
+  return foods.findIndex((food) => food.name === 'apple');
+};
 
 // reduce
-const getSquaredTotal = () => { };
+const getSquaredTotal = (numbers) => {
+  return numbers.reduce((acc, num) => acc + num * num, 0);
+};
 
 // every
-const hasOnlyEvenNumbers = () => { };
+const hasOnlyEvenNumbers = (arr) => {
+  if (arr.length === 0) return false;
+  return arr.every(num => num % 2 === 0);
+};
 
 // some
-const anyGreaterThan10 = () => { };
+const anyGreaterThan10 = (arr) => {
+  return arr.some((num) => num > 10);
+};
 
 // Use your judgement to decide which array method to use!
-const roundAll = () => { };
+const roundAll = (arr) => {
+  return arr.map((num) => Math.round(num));
+};
 
-const onlyStrings = () => { };
+const onlyStrings = (arr) => {
+  return arr.filter((s) => typeof s === 'string');
+};
 
-const stringsToLength = () => { };
+const stringsToLength = (arr) => {
+  return arr.map((str) => str.length);
+};
 
-const totalGreaterThanGiven = () => { };
+const totalGreaterThanGiven = (arr, num) => {
+  const sum = arr.reduce((acc, val) => acc + val, 0);
+  return sum > num;
+};
 
-const numberOfLongWords = () => { };
+const numberOfLongWords = (arr) => {
+  const length = arr.map((str) => (str.length > 4 ? 1 : 0));
+  return length.reduce((sum, num) => sum + num, 0);
+};
 
-const numberOfCharacters = () => { };
+const numberOfCharacters = (arr) => {
+  const counts = [...arr].reduce((acc, currentWord) => {
+    if (!acc[currentWord]) {
+      acc[currentWord] = 1;
+    } else {
+      acc[currentWord]++;
+    }
+    return acc;
+  }, {});
+  return counts;
+};
 
-const removeJerkFromCompany = () => { };
+const removeJerkFromCompany = (arr) => {
+  const keep = arr.filter((s) => s.personality !== 'jerk');
+  arr.length = 0;
+  arr.push(...keep);
+};
 
-const chosenCoordinates = () => { };
+const chosenCoordinates = (arr, target) => {
+  return arr.find(([x, y]) => x + y === target);
+};
 
 // Sorting Functions
-const sortWords = () => { };
+const sortWords = (names) => {
+  const namesCopy = [...names];
+  namesCopy.sort();
+  return namesCopy;
+};
 
-const sortNumbers = () => { };
+const sortNumbers = (numbers) => {
+  const numbersCopy = [...numbers];
+  numbersCopy.sort((a, b) => a - b);
+  return numbersCopy;
+};
 
-const sortNumbersBetter = () => { };
+const sortNumbersBetter = (numbers, descending) => {
+  const numbersCopy = [...numbers];
+  numbersCopy.sort((a, b) => a - b);
+  if (descending) {
+    numbersCopy.reverse();
+  };
+  return numbersCopy;
+};
 
-const sortUsersByOrder = () => { };
+const sortUsersByOrder = (users) => {
+  const usersCopy = [...users];
+  return usersCopy.sort((a, b) => a.order - b.order);
+};
 
-const sortUsersByName = () => { };
+const sortUsersByName = (users) => {
+  return [...users].sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0)
+};
 
 module.exports = {
   getUserById,
